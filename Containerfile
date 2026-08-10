@@ -53,7 +53,8 @@ COPY --from=builder /staging/usr/ /usr/
 COPY --from=builder /usr/local/ /usr/local/
 COPY --from=builder /app/ /app/
 
-RUN glib-compile-schemas /usr/share/glib-2.0/schemas && \
+RUN touch /.flatpak-info && \
+    glib-compile-schemas /usr/share/glib-2.0/schemas && \
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor && \
     update-desktop-database -q /usr/share/applications
 
