@@ -28,19 +28,12 @@ RUN git clone --depth 1 --branch v0.1.5 https://github.com/fvs-lab/fvs2.git /tmp
     git clone --depth 1 --branch v0.0.1 https://github.com/fvs-lab/core.git /tmp/core && \
     cd /tmp/fvs2 && go build -o /usr/local/bin/fvs2 ./cmd/fvs2
 
-RUN mkdir -p /app/bin /app/etc/runtime /app/share/licenses/umu-launcher && \
-    wget -qO /tmp/umu.tar https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.4.4/umu-launcher-1.4.4-zipapp.tar && \
-    tar -xf /tmp/umu.tar --strip-components=1 -C /tmp && \
-    install -m755 /tmp/umu-run /app/bin/umu-run && \
-    wget -qO /app/share/licenses/umu-launcher/LICENSE https://raw.githubusercontent.com/Open-Wine-Components/umu-launcher/cf3d1b107147480c447ffbfb3f789dc74335074c/LICENSE && \
-    wget -qO /tmp/runtime.tar.gz https://github.com/bottlesdevs/runtime/releases/download/0.6.3/runtime-0.6.3.tar.gz && \
-    tar -xzf /tmp/runtime.tar.gz --strip-components=1 -C /app/etc/runtime && \
-    mkdir -p /app/share/bottles/winebridge && \
+RUN mkdir -p /app/share/bottles/winebridge && \
     wget -qO /tmp/winebridge.tar.xz https://github.com/bottlesdevs/winebridge/releases/download/1.2.0/WineBridge-75aa25e.tar.xz && \
     tar -xJf /tmp/winebridge.tar.xz -C /app/share/bottles/winebridge
 
 # 2. RUNTIME
-FROM ghcr.io/containerpak/gtk:main
+FROM ghcr.io/containerpak/wine:main
 
 RUN apt update && apt install -y --no-install-recommends \
     ca-certificates libc-bin libcurl4 libdrm2 libegl1 libfreetype6 libfreetype6:i386 libgl1 libglib2.0-0 libglib2.0-bin libgles2 libgnutls30t64 libgnutls30t64:i386 libgstreamer1.0-0 libunwind8 libunwind8:i386 libusb-1.0-0 libusb-1.0-0:i386 \

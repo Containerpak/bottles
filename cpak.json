@@ -1,11 +1,20 @@
 {
+  "manifest_version": "1.0",
   "name": "Bottles",
   "description": "Run and manage your Windows applications on Linux with Wine and Proton.",
   "version": "65.4",
   "image": "ghcr.io/containerpak/bottles:main",
   "binaries": ["/usr/bin/bottles"],
   "desktop_entries": ["/usr/share/applications/com.usebottles.bottles.desktop"],
-  "dependencies": [],
+  "dependencies": [
+    {
+      "Id": "",
+      "Origin": "github.com/containerpak/umu",
+      "Branch": "",
+      "Release": "",
+      "Commit": ""
+    }
+  ],
   "addons": [],
   "idle_time": 0,
   "override": {
