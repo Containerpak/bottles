@@ -42,7 +42,7 @@ FROM ghcr.io/containerpak/gtk:main
 RUN apt update && apt install -y --no-install-recommends \
     ca-certificates libdrm2 libegl1 libgl1 libglib2.0-0 libglib2.0-bin libgles2 libgstreamer1.0-0 \
     libgstreamer-plugins-base1.0-0 libnotify4 libsdl2-2.0-0 libsecret-1-0 libvulkan1 \
-    cabextract imagemagick p7zip-full unzip vmtouch vulkan-tools x11-utils xdg-utils \
+    cabextract desktop-file-utils imagemagick p7zip-full unzip vmtouch vulkan-tools x11-utils xdg-utils \
     python3 python3-gi python3-gi-cairo python3-cairo python3-dbus python3-requests \
     libwebkit2gtk-4.1-0 && \
     rm -rf /var/lib/apt/lists/*
