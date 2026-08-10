@@ -34,7 +34,10 @@ RUN mkdir -p /app/bin /app/etc/runtime /app/share/licenses/umu-launcher && \
     install -m755 /tmp/umu-run /app/bin/umu-run && \
     wget -qO /app/share/licenses/umu-launcher/LICENSE https://raw.githubusercontent.com/Open-Wine-Components/umu-launcher/cf3d1b107147480c447ffbfb3f789dc74335074c/LICENSE && \
     wget -qO /tmp/runtime.tar.gz https://github.com/bottlesdevs/runtime/releases/download/0.6.3/runtime-0.6.3.tar.gz && \
-    tar -xzf /tmp/runtime.tar.gz --strip-components=1 -C /app/etc/runtime
+    tar -xzf /tmp/runtime.tar.gz --strip-components=1 -C /app/etc/runtime && \
+    mkdir -p /app/share/bottles/winebridge && \
+    wget -qO /tmp/winebridge.tar.xz https://github.com/bottlesdevs/winebridge/releases/download/1.2.0/WineBridge-75aa25e.tar.xz && \
+    tar -xJf /tmp/winebridge.tar.xz -C /app/share/bottles/winebridge
 
 # 2. RUNTIME
 FROM ghcr.io/containerpak/gtk:main
@@ -52,8 +55,12 @@ RUN apt update && apt install -y --no-install-recommends \
 COPY --from=builder /staging/usr/ /usr/
 COPY --from=builder /usr/local/ /usr/local/
 COPY --from=builder /app/ /app/
+COPY cpak-bottles /usr/local/bin/cpak-bottles
 
 RUN touch /.flatpak-info && \
+    mv /usr/bin/bottles /usr/bin/bottles-real && \
+    mv /usr/local/bin/cpak-bottles /usr/bin/bottles && \
+    chmod 0755 /usr/bin/bottles && \
     glib-compile-schemas /usr/share/glib-2.0/schemas && \
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor && \
     update-desktop-database -q /usr/share/applications
