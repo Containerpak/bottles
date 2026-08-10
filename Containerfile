@@ -45,7 +45,8 @@ RUN apt update && apt install -y --no-install-recommends \
     cabextract desktop-file-utils imagemagick p7zip-full unzip vmtouch vulkan-tools x11-utils xdg-utils \
     python3 python3-gi python3-gi-cairo python3-cairo python3-dbus python3-requests \
     libwebkit2gtk-4.1-0 gir1.2-adw-1 gir1.2-gdkpixbuf-2.0 gir1.2-gtk-4.0 \
-    gir1.2-gst-plugins-base-1.0 gir1.2-notify-0.7 && \
+    gir1.2-gst-plugins-base-1.0 gir1.2-gtksource-5 gir1.2-notify-0.7 \
+    gir1.2-xdp-1.0 gir1.2-xdpgtk4-1.0 && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /staging/usr/ /usr/
