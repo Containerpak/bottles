@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Containerpak/cpak/v2/schema/manifest-v2.json",
   "manifest_version": "2.0",
   "name": "Bottles",
   "description": "Run and manage your Windows applications on Linux with Wine and Proton.",
@@ -8,11 +9,7 @@
   "desktop_entries": ["/usr/share/applications/com.usebottles.bottles.desktop"],
   "dependencies": [
     {
-      "Id": "",
-      "Origin": "github.com/containerpak/umu",
-      "Branch": "",
-      "Release": "",
-      "Commit": ""
+      "origin": "github.com/containerpak/umu"
     }
   ],
   "addons": [],
@@ -38,6 +35,7 @@
     "deviceUsb": false,
     "deviceAll": true,
     "notification": true,
+    "openURI": false,
     "filesystem": [
       {"path": "home", "access": "read-write"},
       {"path": "/etc/machine-id", "access": "read-only"}
@@ -51,7 +49,11 @@
     ],
     "network": true,
     "process": false,
+    "userNamespaces": false,
+    "memoryMaxMB": 0,
+    "cpuQuota": 0,
+    "pidsMax": 0,
     "asRoot": false,
-    "allowedHostCommands": ["xdg-open"]
+    "allowedHostCommands": []
   }
 }
