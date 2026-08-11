@@ -50,8 +50,7 @@ COPY --from=builder /usr/local/ /usr/local/
 COPY --from=builder /app/ /app/
 COPY cpak-bottles /usr/local/bin/cpak-bottles
 
-RUN printf '[Application]\nname=com.usebottles.bottles\n' > /.flatpak-info && \
-    mv /usr/bin/bottles /usr/bin/bottles-real && \
+RUN mv /usr/bin/bottles /usr/bin/bottles-real && \
     mv /usr/local/bin/cpak-bottles /usr/bin/bottles && \
     chmod 0755 /usr/bin/bottles && \
     glib-compile-schemas /usr/share/glib-2.0/schemas && \
