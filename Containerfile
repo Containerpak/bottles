@@ -15,9 +15,9 @@ RUN apt update && apt install -y --no-install-recommends \
 RUN apt update && apt install -y --no-install-recommends blueprint-compiler desktop-file-utils && \
     rm -rf /var/lib/apt/lists/*
 
-ARG VERSION=main
-RUN git clone --depth 1 https://github.com/bottlesdevs/Bottles.git --branch ${VERSION} bottles && \
-    cd bottles && \
+ARG BOTTLES_REVISION=884f60ae7630349490cc7b77df98db39a56c981b
+RUN git clone --depth 1 https://github.com/bottlesdevs/Bottles.git bottles && \
+    cd bottles && git fetch --depth 1 origin ${BOTTLES_REVISION} && git checkout --detach FETCH_HEAD && \
     sed -E '/^(pycairo|PyGObject)==/d' requirements.txt > /tmp/bottles-requirements.txt && \
     python3 -m pip install --ignore-installed --no-cache-dir --break-system-packages -r /tmp/bottles-requirements.txt && \
     touch /.flatpak-info && \
