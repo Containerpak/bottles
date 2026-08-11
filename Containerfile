@@ -59,5 +59,6 @@ RUN touch /.flatpak-info && \
     update-desktop-database -q /usr/share/applications
 
 ENV PATH="/app/bin:/usr/local/bin:/usr/bin:/bin"
+ENV BOTTLES_CPAK=1
 
 ENTRYPOINT ["/usr/bin/bottles"]
