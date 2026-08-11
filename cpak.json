@@ -41,7 +41,7 @@
     "fsHost": false,
     "fsHostEtc": false,
     "fsHostHome": true,
-    "fsExtra": [],
+    "fsExtra": ["/etc/machine-id"],
     "env": [
       "LANG=C.UTF-8",
       "LC_ALL=C.UTF-8",
