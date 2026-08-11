@@ -15,7 +15,7 @@ RUN apt update && apt install -y --no-install-recommends \
 RUN apt update && apt install -y --no-install-recommends blueprint-compiler desktop-file-utils && \
     rm -rf /var/lib/apt/lists/*
 
-ARG BOTTLES_REVISION=439162a21e32eaecfaa1481879398859dc0e38ec
+ARG BOTTLES_REVISION=713cdd6d137b16a419d3bbb20f8b901fccc1927b
 RUN git clone --depth 1 https://github.com/bottlesdevs/Bottles.git bottles && \
     cd bottles && git fetch --depth 1 origin ${BOTTLES_REVISION} && git checkout --detach FETCH_HEAD && \
     sed -E '/^(pycairo|PyGObject)==/d' requirements.txt > /tmp/bottles-requirements.txt && \
