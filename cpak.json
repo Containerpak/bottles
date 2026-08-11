@@ -38,10 +38,10 @@
     "deviceUsb": false,
     "deviceAll": true,
     "notification": true,
-    "fsHost": false,
-    "fsHostEtc": false,
-    "fsHostHome": true,
-    "fsExtra": ["/etc/machine-id"],
+    "filesystem": [
+      {"path": "home", "access": "read-write"},
+      {"path": "/etc/machine-id", "access": "read-only"}
+    ],
     "env": [
       "LANG=C.UTF-8",
       "LC_ALL=C.UTF-8",
