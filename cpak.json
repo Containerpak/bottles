@@ -43,7 +43,6 @@
     "fsHostHome": true,
     "fsExtra": [],
     "env": [
-      "BOTTLES_CPAK=1",
       "LANG=C.UTF-8",
       "LC_ALL=C.UTF-8",
       "PATH=/app/bin:/usr/bin:/usr/local/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/lib/extensions/vulkan/OBSVkCapture/bin/:/usr/lib/extensions/vulkan/gamescope/bin/",
