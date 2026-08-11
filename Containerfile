@@ -20,7 +20,7 @@ RUN git clone --depth 1 https://github.com/bottlesdevs/Bottles.git bottles && \
     cd bottles && git fetch --depth 1 origin ${BOTTLES_REVISION} && git checkout --detach FETCH_HEAD && \
     sed -E '/^(pycairo|PyGObject)==/d' requirements.txt > /tmp/bottles-requirements.txt && \
     python3 -m pip install --ignore-installed --no-cache-dir --break-system-packages -r /tmp/bottles-requirements.txt && \
-    touch /.flatpak-info && \
+    printf '[Application]\nname=com.usebottles.bottles\n' > /.flatpak-info && \
     meson setup --prefix=/usr build && \
     DESTDIR=/staging ninja -C build install
 
@@ -50,7 +50,7 @@ COPY --from=builder /usr/local/ /usr/local/
 COPY --from=builder /app/ /app/
 COPY cpak-bottles /usr/local/bin/cpak-bottles
 
-RUN touch /.flatpak-info && \
+RUN printf '[Application]\nname=com.usebottles.bottles\n' > /.flatpak-info && \
     mv /usr/bin/bottles /usr/bin/bottles-real && \
     mv /usr/local/bin/cpak-bottles /usr/bin/bottles && \
     chmod 0755 /usr/bin/bottles && \
