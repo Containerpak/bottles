@@ -1,9 +1,11 @@
-# Bottles (cpak)
+# Bottles package moved
+
+The official cpak package is now maintained in the Bottles repository.
 
 ## Installation
 
 ```bash
-cpak install github.com/containerpak/bottles
+cpak install github.com/bottlesdevs/bottles
 ```
 
 ## Usage
@@ -11,5 +13,7 @@ cpak install github.com/containerpak/bottles
 Start it from the application menu or by running:
 
 ```bash
-cpak run github.com/containerpak/bottles bottles
+cpak run github.com/bottlesdevs/bottles bottles
 ```
+
+Existing installations from this repository are redirected to the same image.
